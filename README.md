@@ -142,7 +142,7 @@ end
 ```
 
 Notice that here we have to use `counter`, a variable defined outside the block.
-In the previous section, though, we we able to build a simple counting loop
+In the previous section, though, we were able to build a simple counting loop
 using only `times` and a block parameter. Being able to write a loop that
 doesn't rely on an outside variable would make this code a little bit cleaner.
 
