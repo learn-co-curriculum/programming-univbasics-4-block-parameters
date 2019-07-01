@@ -93,7 +93,7 @@ The above loop outputs:
 ```
 
 Block parameters are surrounded by `|` symbols, sometimes referred to as
-'pipes.' Block parameters are similar to the parameters for an method in that
+'pipes.' Block parameters are similar to the parameters for a method in that
 _we_ provide the name. If instead of `index`, we wanted to name it `hot_dog`,
 the results would be the same
 
