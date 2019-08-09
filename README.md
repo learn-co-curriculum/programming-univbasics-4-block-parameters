@@ -5,7 +5,7 @@
 - Define a code block
 - Recognize block parameters
 - Utilize block parameters with `do...end`
-- Incorporate block parameters into loops for arrays
+- Incorporate block parameters into loops for `Array`s
 
 ## Introduction
 
@@ -19,8 +19,8 @@ number.times do
 end
 ```
 
-In another example, we have seen how we can use a `while` loop to access
-each element in an array:
+In another example, we saw how we can use a `while` loop to access
+each element in an `Array`:
 
 ```ruby
 counter = 0
@@ -34,7 +34,7 @@ end
 
 Repetition is so common that Ruby provides a variety of loops as well as
 multiple ways to use those loops. In this lesson, we're going to explore an
-additional component of loops that we can use to simplify the example above:
+additional component of loops that we can use to simplify the `while` example:
 block parameters.
 
 First though, we need to understand what _code blocks_ are.
@@ -52,8 +52,7 @@ end
 ```
 
 The code block here defines what will happen during a single iteration of our
-`while` loop. Code blocks can also be written with curly braces (`{}`), similar
-to other programming languages like JavaScript:
+`while` loop. Code blocks can also be written with curly braces (`{}`):
 
 ```ruby
 while true {
@@ -61,10 +60,13 @@ while true {
 }
 ```
 
-We're effectively saying to Ruby, "while this condition is true, do **_this_**."
-Code blocks are written immediately after a method. They can even be used in
-combination with methods _we_ define, though we will most often see them used
-in loops and, in the near future, [enumerables][].
+We're effectively saying to Ruby, "while this condition is true, do
+**_this_**." Code blocks are written immediately after a method.  We will most
+often see them used in loops and, in the near future, [enumerables][].
+Eventually, you will write methods that take _code blocks_. It'll be great!
+
+Ruby has two ways of defining blocks. For "short blocks" Rubyists prefer `{}`,
+for blocks with multiple lines of code, they prefer `do...end`.
 
 ## Block Parameters
 
@@ -73,8 +75,8 @@ piece we haven't discussed: depending on the method, **blocks can receive
 parameters that are accessible from within the block**.
 
 When using a `times` loop, for instance, we have access to a block parameter
-that is equal to an integer. In the example below, we've named the parameter
-`index`:
+that is equal to an `Integer` with the particular "loop number" we're in. In
+the example below, we've named the parameter `index`:
 
 ```ruby
 5.times do |index|
@@ -92,10 +94,18 @@ The above loop outputs:
 4
 ```
 
-Block parameters are surrounded by `|` symbols, sometimes referred to as
-'pipes.' Block parameters are similar to the parameters for an method in that
-_we_ provide the name. If instead of `index`, we wanted to name it `hot_dog`,
-the results would be the same
+As we just said, since it's just one line of code, most Rubyists would write
+the loop using the `{}` block format as:
+
+```ruby
+5.times { |index| puts index }
+```
+
+Block parameters are surrounded by `|` symbols, usually referred to as 'pipes.'
+
+Block parameters are similar to the parameters for an method in that _we_
+provide the name. If instead of `index`, we wanted to name it `hot_dog` (a bad
+idea), the results would be the same
 
 ```ruby
 5.times do |hot_dog|
@@ -111,15 +121,14 @@ end
 4
 ```
 
-While we can name the parameter whatever we like, the value will be determined
-by what the code block is related to. In this case with `times`, the value of
-the parameter is an integer. This integer will change every time the block is
-called (that is, every iteration of the loop), starting at zero and incrementing
-by one each time.
+While we can name the parameter whatever we like, the value sent to it will
+usually be obviously related to the method that's being run.  With `times`, the
+value of the parameter is the `Integer` of the loop count. This integer will
+change every time the block is called (that is, every iteration of the loop),
+starting at zero and incrementing by one each time.
 
-We see here that using a block parameter with our `times` loop, we were able to
-build a simple counter, but without the need of an external variable like
-`counter`!
+> **APPLY KNOWLEDGE**: You might be seeing how we could use `.times` to shorten
+> up our `while` loops. If you want to test your cleverness, try it out in IRB!
 
 To reiterate, the values block parameters represent are determined by what that
 code block is related to. The `while` loop, for instance, **doesn't have a
@@ -128,8 +137,7 @@ have two or even three parameters.
 
 ## Combining Arrays, Loops and Block Parameters
 
-Previously, we were able to use an array, a `while` loop and a variable to
-output each element in an array:
+Let's tighten up our looping code.
 
 ```ruby
 counter = 0
@@ -141,10 +149,7 @@ while array[counter] do
 end
 ```
 
-Notice that here we have to use `counter`, a variable defined outside the block.
-In the previous section, though, we we able to build a simple counting loop
-using only `times` and a block parameter. Being able to write a loop that
-doesn't rely on an outside variable would make this code a little bit cleaner.
+Can become...
 
 ```ruby
 array = [1,2,3,4,5]
@@ -173,7 +178,18 @@ array.length.times { |index|
 }
 ```
 
+Or, to tighten it up even further:
+
+```ruby
+array = [1,2,3,4,5]
+array.length.times { |index| puts array[index] }
+```
+
 We've eliminated the need for `counter` by using a block parameter!
+
+> **DEEP THINKING**: You might realize that what's effectively happening here
+> is "for each member of the `Array`, do something in a block to that member."
+> Ruby has a built-in that matches this case that we'll learn later on!
 
 ## Conclusion
 
