@@ -41,7 +41,12 @@ First though, we need to understand what _code blocks_ are.
 
 ## Ruby Code Blocks
 
-A code block is a way of grouping statements together. We've actually already
+![Ruby Code Blocks](https://curriculum-content.s3.amazonaws.com/programming-univbasics-4/block-parameters/Image_131_CodeBlock.png)
+
+A code block is a way of grouping statements together. In the graphic above we've
+highlighted the code blocks. They're the part between a `do...end` and `{...}`.
+
+We've actually already
 used them quite a few times! They are most often seen in the form of `do...end`,
 as with a `while` loop:
 
