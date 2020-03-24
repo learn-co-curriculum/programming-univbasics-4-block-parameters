@@ -180,6 +180,23 @@ array.length.times { |index|
 
 We've eliminated the need for `counter` by using a block parameter!
 
+Let's look at one final example. We've only dealt with outputting array elements so far.
+Below is an example for using block parameters to create a new array from an existing array:
+
+```rb
+array = [1,2,3,4,5]
+new_array = []
+
+array.length.times do |index|
+  new_array.push(array[index] + 1)
+end
+new_array
+ # => [2, 3, 4, 5, 6]
+```
+
+This code loops five times (`array.length.times`), and in each loop, the value of `array[index]` plus
+one is pushed into `new_array`. After the loop, `new_array` contains five values.
+
 ## Conclusion
 
 As you progress, block parameters will become as normal as writing a `puts`
